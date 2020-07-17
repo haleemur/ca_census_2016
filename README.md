@@ -51,7 +51,7 @@ I decided it would be worthwhile to clean up this column of type-mixed data befo
 The original & new column names I settled on are:
 
 | original name                                    | new name          | 
-|==================================================|===================|
+| ------------------------------------------------ | ----------------- |
 | CENSUS_YEAR                                      | census_year       |
 | GEO_CODE (POR)                                   | geo_code          |
 | GEO_LEVEL                                        | geo_level         |
@@ -67,7 +67,6 @@ The original & new column names I settled on are:
 | Dim: Sex (3): Member ID: [1]: Total - Sex        | total             |
 | Dim: Sex (3): Member ID: [2]: Male               | male              |
 | Dim: Sex (3): Member ID: [3]: Female             | female            |
-|==================================================|===================|
 
 In order to read the origninal file efficiently into pandas, I supplied the dtypes and renamed the columns in the same operation. Of course I didn't do this the first few times I tried to read the file, and expectedly, pandas either took too long or crashed (depending on what else I was also doing on the computer) or complained afterwards when I was trying to manipulate the file that there wasn't enough memory. After reading, I set about cleanding the data & adding the 3 columns to store the missing data codes
 
