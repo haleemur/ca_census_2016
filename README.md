@@ -1,3 +1,12 @@
+# The Canadian 2016 Census Data
+
+This repository contains the 2016 Canadian Census Data (currently only in English) in parquet format. I picked parquet for its amazing compression and easy splitting of large files making sharing via git feasible.
+
+So far I've uploaded two files:
+
+* profile_ct.parq - Census metropolitan areas (CMAs), tracted census agglomerations (CAs) and census tracts (CTs)
+* profile_cd_csd_da.parq - Canada, provinces, territories, census divisions (CDs), census subdivisions (CSDs) and dissemination areas (DAs)
+
 # Making the Census slightly easier to use
 
 I'd venture a guess that half of all data science & analytics professionals have at some point interacted with Census data.
