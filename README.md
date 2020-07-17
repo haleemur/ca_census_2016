@@ -17,8 +17,9 @@ The last Canada census was taken in 2016, and the summarized census data can be 
 
 It took me (on not-the-best-internet) over an hour to download the file. There are other formats offered by statscan. The compressed tab-separted version has (unsurprisingly) the same size as the compressed CSV. The compressed XML version is over 2 Gigabytes in size. I'm really curious how many people downloaded the XML version. The unfamiliar format (for me) on the statscan website had the file extension `IVT`. After some initial googling, that turned out to be a proprietary format supported by a product called Beyond 20/20. Luckily, statscan provides a beyond 20/20 data browser on its website, which can be used to explore the dataset. **Disclaimer: I have not tried it because I'm much more comfortable scripting in python**
 
+# Example Transformation CSV -> Parquet
 
-Here are the steps taken to convert the CSV data to parquet and apply some minimal transformations to aide interactive analysis of the data. You should be able to  reproduce these steps with slight alterations for all the other census profile files available through the statscan website.
+Here are the steps taken to convert the CSV data to parquet and apply some minimal transformations to aid interactive analysis of the data. You should be able to  reproduce these steps with slight alterations for all the other census profile files available through the statscan website.
 
 Code & examples using this file: [Canada, provinces, territories, census divisions (CDs), census subdivisions (CSDs) and dissemination areas (DAs)](https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/prof/details/download-telecharger/comp/GetFile.cfm?Lang=E&FILETYPE=CSV&GEONO=055)
 
@@ -87,13 +88,21 @@ In order to read the origninal file efficiently into pandas, I supplied the dtyp
     import pandas as pd
     import fastparquet as fp
     
-    dtypes = {'census_year': 'category', 'geo_code': 'int', 
-              'geo_level': 'category', 'geo_name': 'category', 
-              'gnr': 'float', 'gnr_lf': 'float', 
-              'data_quality_flag': 'category', 'csd_type_name': 'str', 
-              'alt_geo_code': 'int', 'profile_dim': 'category', 
-              'profile_member_id': 'category', 'notes': 'category', 
-              'total': 'str', 'male': 'str', 'female': 'str'}
+    dtypes = {'census_year': 'category', 
+              'geo_code': 'int', 
+              'geo_level': 'category', 
+              'geo_name': 'category', 
+              'gnr': 'float', 
+              'gnr_lf': 'float', 
+              'data_quality_flag': 'category', 
+              'csd_type_name': 'str', 
+              'alt_geo_code': 'int', 
+              'profile_dim': 'category', 
+              'profile_member_id': 'category', 
+              'notes': 'category', 
+              'total': 'str', 
+              'male': 'str', 
+              'female': 'str'}
     
     names = list(dtypes.keys())
     
